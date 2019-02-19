@@ -1,0 +1,96 @@
+<div class="related-products  module-style1">
+	<div class="module-title">
+		<h2>Рекомендуемые товары</h2>
+	</div>
+
+	<div class="owl-container">
+		<div class="related-container tt-product owl-carousel owl-theme owl-loaded owl-drag">
+
+			<div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 300px;"><div class="owl-item first last active" style="width: 300px;"><div class="row_items">
+							<div class="product-layout grid-style">
+								<div class="product-thumb transition">
+									<div class="item">
+										<div class="item-inner">
+											<div class="image images-container">
+												<a href="http://planetcoffee.com.ua/kofe-v-zernakh-ricco-coffee-premium-espresso" class="product-image">
+													<img src="https://planetcoffee.com.ua/image/cache/catalog/Products/images.ua.prom.st/240447400_w640_h640_stal_1000-600x720.jpg" alt="Кофе в зернах Ricco Coffee Premium Espr..." title="Кофе в зернах Ricco Coffee Premium Espr..." class="img-responsive">
+												</a>
+												<button class="button btn-wishlist" type="button" title="В закладки" onclick="wishlist.add('50145617');"><span>В закладки</span></button>
+											</div><!-- image -->
+											<div class="caption">
+
+												<p class="manufacture-product">
+													<a href="http://planetcoffee.com.ua/index.php?route=product/manufacturer/info&amp;manufacturer_id=16">Ricco Coffee</a>
+												</p>
+												<h4 class="product-name"><a href="http://planetcoffee.com.ua/kofe-v-zernakh-ricco-coffee-premium-espresso">Кофе в зернах Ricco Coffee Premium Espr...</a></h4>
+
+												<div class="price-box">
+													<label></label>
+													<p class="regular-price"><span class="price">150 грн.</span></p>
+													<p class="price-tax"><span class="price">Без НДС: 150 грн.</span></p>
+												</div>
+												<div class="ratings">
+													<div class="rating-box">
+														<div class="rating5">rating</div>
+													</div>
+												</div>
+												<div class="box-hover">
+													<div class="action-links">
+														<button class="button btn-compare" type="button" title="В сравнение" onclick="compare.add('50145617');"><span>В сравнение</span></button>
+														<button class="button btn-cart smca-call-button" type="button" title="Купить" onclick="getOCwizardModal_smca('50145617','add');"><span>Купить</span></button>
+														<button class="button btn-quickview" type="button" title="" onclick="ocquickview.ajaxView('http://planetcoffee.com.ua/kofe-v-zernakh-ricco-coffee-premium-espresso')"><span></span></button>
+													</div>
+												</div>
+											</div><!-- caption -->
+										</div>
+									</div>
+								</div><!-- product-thumb -->
+							</div><!-- product-layout -->
+						</div></div></div></div><div class="owl-nav disabled"><div class="owl-prev disabled">prev</div><div class="owl-next disabled">next</div></div><div class="owl-dots disabled"></div></div>
+	</div>
+
+</div>
+
+
+<h3>{{ heading_title }}</h3>
+<div class="row">
+	{% for product in products %}
+	<div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		<div class="product-thumb transition">
+			<div class="image"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a></div>
+			<div class="caption">
+				<h4><a href="{{ product.href }}">{{ product.name }}</a></h4>
+				<p>{{ product.description }}</p>
+				{% if product.rating %}
+				<div class="rating">
+					{% for i in 1..5 %}
+					{% if product.rating < i %}
+					<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+					{% else %}
+					<span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+					{% endif %}
+					{% endfor %}
+				</div>
+				{% endif %}
+				{% if product.price %}
+				<p class="price">
+					{% if not product.special %}
+					{{ product.price }}
+					{% else %}
+					<span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span>
+					{% endif %}
+					{% if product.tax %}
+					<span class="price-tax">{{ text_tax }} {{ product.tax }}</span>
+					{% endif %}
+				</p>
+				{% endif %}
+			</div>
+			<div class="button-group">
+				<button type="button" onclick="cart.add('{{ product.product_id }}');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ button_cart }}</span></button>
+				<button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="fa fa-heart"></i></button>
+				<button type="button" data-toggle="tooltip" title="{{ button_compare }}" onclick="compare.add('{{ product.product_id }}');"><i class="fa fa-exchange"></i></button>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>

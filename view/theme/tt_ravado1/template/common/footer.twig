@@ -1,0 +1,139 @@
+<footer>
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col1 col-md-4 col-sm-6 col-footer">
+                    <div class="footer-container">
+                        <div class="footer-logo">
+                            <img src="image/catalog/logo/logo-planet-coffee-gold.svg" alt="image">
+                        </div>
+                    </div>
+                    <div class="text-about-us">
+                        {#<p class="about-us">#}
+                            {#Мы супер-пупер кампания с длинным списоким наград за заслуги и отвагу.#}
+                        {#</p>#}
+                        {#<p class="about-us">#}
+                            {#Мы супер-пупер кампания с длинным списоким наград за заслуги и отвагу.#}
+                        {#</p>#}
+                    </div>
+
+
+                    </div>
+                {% if informations %}
+                    <div class="col-md-2 col-sm-6 col-footer">
+                        {#<div class="footer-title"><h3>{{ text_information }}</h3></div>#}
+                        <div class="footer-content">
+                            <ul class="list-unstyled text-content">
+                                {#{% for information in informations %}#}
+                                    {#<li><a href="{{ information.href }}">{{ information.title }}</a></li>#}
+                                {#{% endfor %}#}
+                                <li><a href="/delivery-inf">Оплата и доставка</a></li>
+                                <li><a href="/confedence">Privacy Policy</a></li>
+                                <li><a href="/kofe-shop">Кофейня</a></li>
+                                <li><a href="/contact">Контакты</a></li>
+                                <li><a href="{{ sitemap }}">{{ text_sitemap }}</a></li>
+
+
+                                {#<li><a href="{{ manufacturer }}">{{ text_manufacturer }}</a></li>#}
+                                {#<li><a href="{{ voucher }}">{{ text_voucher }}</a></li>#}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 col-sm-6 col-footer">
+                        {#<div class="footer-title"><h3>{{ text_service }}</h3></div>#}
+                        <div class="footer-content">
+                            <ul class="list-unstyled text-content">
+                                <li><a href="/kofe">Кофе</a></li>
+                                <li><a href="/kofemachiny">Кофемашины</a></li>
+                                <li><a href="/acsessuary">Аксессуары</a></li>
+                                <li><a href="/sladosti">Сладости</a></li>
+                                <li><a href="/tovary-dlya-doma">Товары для дома</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="col-md-4 col-sm-6 col-footer">
+                    {% if block6 %}
+                        {{ block6 }}
+                    {% else %}
+                        <div class="footer-container">
+                            <div class="footer_static">
+                                {% if block5 %}
+                                    {{ block5 }}
+                                {% endif %}
+                            </div>
+                            <div class="footer-static-right">
+                                <p>ул. Байкальская 6, Днепр,</p>
+                                <p>Днепропетровская область, 49000</p>
+                            </div>
+                        </div>
+                        <div class="footer-container social-block">
+                            <p id="social-text">Мы в социальных сетях</p>
+                            <div class="footer-social">
+                                <div class="social instagram">
+                                    <a href="#" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+                                </div>
+                                <div class="social facebook">
+                                    <a href="#" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
+                                </div>
+                                <div class="social telegram">
+                                    <a href="#" target="_blank"><i class="fa fa-paper-plane fa-2x"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {#<div class="footer-container">#}
+                            {#<div class="footer-logo">#}
+                                {#<img src="image/catalog/logo/logo-planet-coffee-gold.svg" alt="image">#}
+                            {#</div>#}
+                        {#</div>#}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="center-block copyright-text"><small><strong>Planetcoffee </strong><i class="fa fa-copyright"></i> {{ "now"|date("Y") }} All rights reserved</small></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#<div class="footer-bottom">#}
+    {#<div class="container">#}
+    {#<div class="container-inner">#}
+    {#<div class="footer-copyright">#}
+    {#<span>#}{#{{ powered }}#}{#</span>#}
+    {#</div>#}
+    {##}
+    {#</div>#}
+    {#</div>#}
+    {#</div>#}
+    {#<div id="back-top"><span><small><strong>holyfood</strong><i class="fa fa-copyright"></i> 2019 CREATED BY <a href="https://onpage.com.ua/"><strong>onpage</strong></a> All rights reserved</small>Copyright {{ "now"|date("Y") }}</span><i class="fa fa-angle-up"></i></div>#}
+</footer>
+<script>
+    $(document).ready(function () {
+        // hide #back-top first
+        $("#back-top").hide();
+        // fade in #back-top
+        $(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > $('body').height() / 3) {
+                    $('#back-top').fadeIn();
+                } else {
+                    $('#back-top').fadeOut();
+                }
+            });
+            // scroll body to 0px on click
+            $('#back-top').click(function () {
+                $('body,html').animate({scrollTop: 0}, 800);
+                return false;
+            });
+        });
+    });
+</script>
+{% for script in scripts %}
+    <script src="{{ script }}"></script>
+{% endfor %}
+
+</div><!-- wrapper -->
+</body></html>
